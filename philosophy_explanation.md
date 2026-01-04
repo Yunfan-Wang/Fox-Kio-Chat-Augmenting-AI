@@ -8,7 +8,7 @@ Chatting experience augmentation through:
    2.1 Intent identification
    2.2 Chatting pace control
    2.3 Chatting strategy stipulation
-3. Scenario satisfaction and human centric insure
+3. Scenario satisfaction and human centric insure\n
    3.1 Scenario specific wording
    3.2 randomization and humanization
    3.3 ethics ensurment
