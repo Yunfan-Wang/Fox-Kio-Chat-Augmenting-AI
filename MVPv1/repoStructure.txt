@@ -1,0 +1,28 @@
+server/
+    app/
+      __init__.py
+      main.py
+      schemas.py
+      orchestrator.py
+      personas/
+        __init__.py
+        registry.py
+        carp/
+          __init__.py
+          entrepreneur.py
+          coach.py
+        fox/
+          __init__.py
+          leader.py
+          empath.py
+      llm/
+        __init__.py
+        provider.py
+    requirements.txt
+    .env.example
+
+  client-extension/
+    manifest.json
+    popup.html
+    popup.js
+    styles.css

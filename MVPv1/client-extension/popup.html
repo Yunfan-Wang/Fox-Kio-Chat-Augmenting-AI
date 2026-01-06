@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Koi & Fox MVP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Koi & Fox MVP</h1>
+  <p class="subtitle">Pick personas, paste context + draft, get guidance + rewrites.</p>
+
+  <div class="row">
+    <label for="koiSelect">Koi Persona (Goal / Direction)</label>
+    <select id="koiSelect"></select>
+  </div>
+
+  <div class="row">
+    <label for="foxSelect">Fox Persona (Strategy / Tone)</label>
+    <select id="foxSelect"></select>
+  </div>
+
+  <div class="row grid3">
+    <div>
+      <label for="aggr">Aggressiveness</label>
+      <input id="aggr" type="range" min="0" max="1" step="0.05" value="0.6" />
+      <div class="hint" id="aggrVal">0.60</div>
+    </div>
+    <div>
+      <label for="intr">Interruptiveness</label>
+      <input id="intr" type="range" min="0" max="1" step="0.05" value="0.3" />
+      <div class="hint" id="intrVal">0.30</div>
+    </div>
+    <div>
+      <label for="struct">Structure Strength</label>
+      <input id="struct" type="range" min="0" max="1" step="0.05" value="0.6" />
+      <div class="hint" id="structVal">0.60</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="conversation">Conversation Context (paste last few turns)</label>
+    <textarea id="conversation" rows="7" placeholder="Paste conversation here..."></textarea>
+  </div>
+
+  <div class="row">
+    <label for="draft">Your Draft (what you plan to send)</label>
+    <textarea id="draft" rows="5" placeholder="Write your draft here..."></textarea>
+  </div>
+
+  <div class="row buttons">
+    <button id="analyzeBtn">Analyze</button>
+    <button id="clearBtn" class="secondary">Clear</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <div class="panel">
+    <h2>Koi Output</h2>
+    <pre id="koiOut"></pre>
+  </div>
+
+  <div class="panel">
+    <h2>Fox Reply Options</h2>
+    <div id="options"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

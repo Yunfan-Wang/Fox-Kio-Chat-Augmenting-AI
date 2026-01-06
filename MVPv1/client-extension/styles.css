@@ -1,0 +1,134 @@
+:root {
+  --bg: #ffffff;
+  --muted: #666;
+  --panel: #f6f6f6;
+  --border: #e1e1e1;
+  --btn: #111;
+  --btnText: #fff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  width: 440px;
+  padding: 12px;
+  background: var(--bg);
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0 0 4px 0;
+}
+
+.subtitle {
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  align-items: end;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 8px 10px;
+  cursor: pointer;
+  background: var(--btn);
+  color: var(--btnText);
+  border: none;
+  border-radius: 8px;
+  flex: 1;
+}
+
+button.secondary {
+  background: #ddd;
+  color: #111;
+}
+
+.status {
+  font-size: 12px;
+  margin: 6px 0;
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--panel);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-top: 10px;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-size: 12px;
+  margin: 0;
+}
+
+.option {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+.option .tag {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.option .text {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.option .why {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.option .actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.option button {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
