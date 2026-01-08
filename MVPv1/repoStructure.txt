@@ -7,7 +7,7 @@ server/
       personas/
         __init__.py
         registry.py
-        carp/
+        koi/
           __init__.py
           entrepreneur.py
           coach.py

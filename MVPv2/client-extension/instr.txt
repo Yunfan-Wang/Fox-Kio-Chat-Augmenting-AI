@@ -1,0 +1,5 @@
+Backend is running at http://127.0.0.1:8000
+
+API request fields: koi_persona_id, fox_persona_id
+
+API response fields: koi, fox

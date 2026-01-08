@@ -1,0 +1,9 @@
+T-Technical thoughts, B-Business concerns, A-Academic facts
+1/6/2026 (T) Allow for people to train their own Koi or Fox agent persona from their own chatting history
+1/6/2026 (B) We can allow for people to sell their self trained persona on our platform, each user can subscribe for another person's persona
+1/6/2026 (T) V1 is complete, Input: context + draft + persona ids, Koi: infers goal, Fox: optimizes replies based on inferred goal. But we can always push this forward to v2, 
+Input: context + draft + persona ids + goal_spec (explicit) Koi: uses provided goal and focuses on alignment/progress/drift Fox: optimizes replies specifically to achieve that goal.
+1/6/2026 (B) We can build this product to assist the industry to train their employees
+1/7/2026 (A) Using multiple agents with each agent specializing on one task helps to improve explanability and together using an orchestrator will jackpot the user needs
+1/7/2026 (T) We should later on allow for local deployment for the fastest real-time deployment.
+1/7/2026 (T_v2) For the Koi personas, we should explicitly define "You MUST use the explicit goal spec provided. Do NOT invent or redefine the goal. Your job is to evaluate alignment, drift, missing info, and next step.".

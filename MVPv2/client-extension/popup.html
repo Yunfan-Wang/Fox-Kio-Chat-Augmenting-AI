@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Koi & Fox MVP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Koi & Fox MVP</h1>
+  <p class="subtitle">Pick personas. Choose goal mode. Paste context + draft. Get guidance + rewrites.</p>
+
+  <!-- Goal Mode -->
+  <div class="row">
+    <label>Goal Mode</label>
+    <div class="toggle">
+      <label class="radio">
+        <input type="radio" name="goalMode" value="guided" checked />
+        Guided (3-step wizard)
+      </label>
+      <label class="radio">
+        <input type="radio" name="goalMode" value="infer" />
+        Infer from context (V1)
+      </label>
+    </div>
+    <div class="hint" id="goalModeHint"></div>
+  </div>
+
+  <!-- Wizard (only for guided) -->
+  <div id="wizard" class="panel">
+    <div class="wizardHeader">
+      <h2>Goal Wizard</h2>
+      <div class="wizardStep" id="wizardStepLabel">Step 1 / 3</div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="wizardPage" id="wiz1">
+      <label for="wizGoal">1) What outcome do you want?</label>
+      <input id="wizGoal" class="input" type="text"
+             placeholder="e.g., agree on next steps / negotiate price / resolve conflict / build rapport" />
+      <div class="hint">One sentence. You can be specific.</div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="wizardPage hidden" id="wiz2">
+      <label for="wizRelationship">2) Who are you talking to?</label>
+      <select id="wizRelationship" class="input">
+        <option value="boss/manager">Boss / Manager</option>
+        <option value="peer/teammate">Peer / Teammate</option>
+        <option value="client/customer">Client / Customer</option>
+        <option value="partner/vendor">Partner / Vendor</option>
+        <option value="friend/partner">Friend / Partner</option>
+        <option value="stranger">Stranger</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="wizGoalType" style="margin-top:10px;">Goal type</label>
+      <select id="wizGoalType" class="input">
+        <option value="business">Business</option>
+        <option value="relationship">Relationship</option>
+        <option value="conflict_resolution">Conflict resolution</option>
+        <option value="small_talk">Small talk</option>
+        <option value="other" selected>Other</option>
+      </select>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="wizardPage hidden" id="wiz3">
+      <label for="wizConstraints">3) Any constraints / boundaries?</label>
+      <textarea id="wizConstraints" rows="4" placeholder="One per line (optional)"></textarea>
+      <div class="hint">Examples: keep it short; avoid sounding pushy; don't mention budget; be polite.</div>
+    </div>
+
+    <div class="wizardButtons">
+      <button id="wizBack" class="secondary">Back</button>
+      <button id="wizNext">Next</button>
+    </div>
+
+    <div class="hint" id="wizStatus"></div>
+  </div>
+
+  <!-- Personas -->
+  <div class="row">
+    <label for="koiSelect">Koi Persona (Goal / Direction style)</label>
+    <select id="koiSelect"></select>
+  </div>
+
+  <div class="row">
+    <label for="foxSelect">Fox Persona (Strategy / Tone style)</label>
+    <select id="foxSelect"></select>
+  </div>
+
+  <!-- Knobs -->
+  <div class="row grid3">
+    <div>
+      <label for="aggr">Aggressiveness</label>
+      <input id="aggr" type="range" min="0" max="1" step="0.05" value="0.6" />
+      <div class="hint" id="aggrVal">0.60</div>
+    </div>
+    <div>
+      <label for="intr">Interruptiveness</label>
+      <input id="intr" type="range" min="0" max="1" step="0.05" value="0.3" />
+      <div class="hint" id="intrVal">0.30</div>
+    </div>
+    <div>
+      <label for="struct">Structure Strength</label>
+      <input id="struct" type="range" min="0" max="1" step="0.05" value="0.6" />
+      <div class="hint" id="structVal">0.60</div>
+    </div>
+  </div>
+
+  <!-- Inputs -->
+  <div class="row">
+    <label for="conversation">Conversation Context (paste last few turns)</label>
+    <textarea id="conversation" rows="7" placeholder="Paste conversation here..."></textarea>
+  </div>
+
+  <div class="row">
+    <label for="draft">Your Draft</label>
+    <textarea id="draft" rows="5" placeholder="Write your draft here..."></textarea>
+  </div>
+
+  <div class="row buttons">
+    <button id="analyzeBtn">Analyze</button>
+    <button id="clearBtn" class="secondary">Clear</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <div class="panel">
+    <h2>Koi Output</h2>
+    <pre id="koiOut"></pre>
+  </div>
+
+  <div class="panel">
+    <h2>Fox Reply Options</h2>
+    <div id="options"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

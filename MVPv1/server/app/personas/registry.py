@@ -12,7 +12,6 @@ class Persona:
     description: str
     system_prompt: str
 
-
 # -----------------------
 # KOI PERSONAS (Goal/Direction)
 
