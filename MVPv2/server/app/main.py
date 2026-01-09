@@ -4,6 +4,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from .schemas import AnalyzeRequestV2, AnalyzeResponseV2
 from .orchestrator_v2 import run_analysis_v2
+from .llm.provider import MockProvider, OpenAIProvider
+
 
 from .schemas import (
     AnalyzeRequest,
@@ -31,11 +33,14 @@ app.add_middleware(
 
 def _get_llm():
     provider = os.getenv("LLM_PROVIDER", "mock").lower()
-    if provider == "mock":
-        return MockProvider()
+    if provider == "openai":
+        key = os.getenv("OPENAI_API_KEY", "").strip()
+        model = os.getenv("OPENAI_MODEL", "gpt-4o-mini").strip()
+        if not key:
+            # fall back to mock if key missing
+            return MockProvider()
+        return OpenAIProvider(api_key=key, model=model)
 
-    # TODO: plug real providers here (OpenAI/Anthropic/local)
-    # Choose my extension carefully
     return MockProvider()
 
 

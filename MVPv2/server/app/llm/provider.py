@@ -1,7 +1,7 @@
 from __future__ import annotations
-
-from typing import Any, Dict
-
+import json
+from typing import Any, Dict, Optional
+from openai import AsyncOpenAI
 
 class LLMProvider:
     """
@@ -16,6 +16,7 @@ class LLMProvider:
         Returns a JSON object as a Python dict.
         The caller is responsible for validating it against Pydantic schemas.
         """
+        
         raise NotImplementedError
 
 
@@ -77,3 +78,41 @@ class MockProvider(LLMProvider):
                 },
             ],
         }
+class OpenAIProvider(LLMProvider):
+    def __init__(self, api_key: str, model: str):
+        self.client = AsyncOpenAI(api_key=api_key)
+        self.model = model
+
+    async def generate_json(self, system_prompt: str, user_payload: str) -> Dict[str, Any]:
+        """
+        Forces JSON-only output. If the model returns invalid JSON, we try one repair pass.
+        """
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_payload},
+        ]
+
+        # Ask for strict JSON object only
+        resp = await self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            temperature=0.4,
+            response_format={"type": "json_object"},
+        )
+
+        text = resp.choices[0].message.content or "{}"
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            # One repair attempt
+            repair_messages = messages + [
+                {"role": "user", "content": "Your last output was not valid JSON. Return ONLY a valid JSON object, no extra text."}
+            ]
+            resp2 = await self.client.chat.completions.create(
+                model=self.model,
+                messages=repair_messages,
+                temperature=0.0,
+                response_format={"type": "json_object"},
+            )
+            text2 = resp2.choices[0].message.content or "{}"
+            return json.loads(text2)
